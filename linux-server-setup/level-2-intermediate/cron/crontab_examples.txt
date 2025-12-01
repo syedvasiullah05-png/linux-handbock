@@ -1,0 +1,8 @@
+# Daily backup at 2 AM
+0 2 * * * /usr/local/bin/backup_myapp.sh
+
+# Weekly log cleanup
+0 3 * * 0 /usr/local/bin/cleanup_logs.sh
+
+# Health check every 5 mins
+*/5 * * * * /usr/local/bin/app_health.sh

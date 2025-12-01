@@ -1,0 +1,1 @@
+alice ALL=(ALL) NOPASSWD: /usr/bin/systemctl, /usr/bin/journalctl

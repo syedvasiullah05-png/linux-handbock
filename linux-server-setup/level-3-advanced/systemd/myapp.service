@@ -1,0 +1,17 @@
+[Unit]
+Description=MyApp Java Service
+After=network.target
+
+[Service]
+Type=simple
+User=ciuser
+Group=devs
+WorkingDirectory=/srv/myapp
+ExecStart=/srv/myapp/bin/start.sh
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/var/log/myapp/myapp.out
+StandardError=append:/var/log/myapp/myapp.err
+
+[Install]
+WantedBy=multi-user.target

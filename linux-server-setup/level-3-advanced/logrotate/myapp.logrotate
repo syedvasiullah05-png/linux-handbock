@@ -1,0 +1,12 @@
+/var/log/myapp/*.log /srv/myapp/logs/*.log {
+    daily
+    rotate 14
+    compress
+    delaycompress
+    notifempty
+    copytruncate
+    sharedscripts
+    postrotate
+        systemctl reload myapp.service 2>/dev/null || true
+    endscript
+}
