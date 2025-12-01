@@ -1,0 +1,137 @@
+# 🐧 **Linux Basics (Very Simple Explanation)**
+
+### ⭐ **1. What is Linux?**
+
+Think of Linux like a **big playground** where your computer plays.
+It helps your computer **run programs**, **store files**, and **do tasks**.
+
+---
+
+# 👤 **Users & Groups**
+
+### ⭐ **2. What is a User?**
+
+A *user* is like a **person who is allowed to enter the playground**.
+Each user has their **own space** and permissions.
+
+### ⭐ Why do we create users?
+
+So that **everyone has their own separate place**, and **no one disturbs others’ work**.
+
+Example command:
+
+```bash
+sudo adduser dev1
+```
+
+---
+
+# 👥 **Groups**
+
+### ⭐ What is a Group?
+
+A *group* is like a **team**.
+Many users can be in one group and share files easily.
+
+Example:
+
+```bash
+sudo groupadd developers
+sudo usermod -aG developers dev1
+```
+
+---
+
+# 🔐 **Permissions**
+
+### ⭐ What are permissions?
+
+Permissions tell:
+
+* who can **read** the file (just look),
+* who can **write** (change it),
+* who can **execute** (run it).
+
+Example:
+
+```bash
+chmod 755 filename
+```
+
+**Simple meaning:**
+
+* Owner can do everything
+* Others can only read + run
+
+---
+
+# 📦 **Packages**
+
+### ⭐ What is a package?
+
+A package is like an **app** (software).
+We install packages to use them.
+
+Example:
+
+```bash
+sudo apt install nginx
+```
+
+---
+
+# 💽 **System Info**
+
+### ⭐ Basic commands:
+
+Check memory:
+
+```bash
+free -m
+```
+
+Check CPU:
+
+```bash
+lscpu
+```
+
+Check disk:
+
+```bash
+df -h
+```
+
+---
+
+# 📁 **Directories (Folders)**
+
+### ⭐ Common folders
+
+* `/home` → Users’ personal space
+* `/var/log` → Logs (computer diary)
+* `/etc` → Configuration files
+* `/root` → Superuser home
+* `/opt` → Installed software
+
+---
+
+# 🧭 **Basic Navigation Commands**
+
+| Command      | Very Simple Meaning            |
+| ------------ | ------------------------------ |
+| `ls`         | Show what is inside the folder |
+| `cd folder`  | Move into a folder             |
+| `pwd`        | Show where you are             |
+| `mkdir name` | Create a new folder            |
+| `rm file`    | Delete a file                  |
+| `cp a b`     | Copy file                      |
+| `mv a b`     | Move or rename file            |
+
+---
+
+If you want, I can give you:
+✔️ Notes
+✔️ Diagrams
+✔️ Practice tasks
+✔️ Real-time examples
