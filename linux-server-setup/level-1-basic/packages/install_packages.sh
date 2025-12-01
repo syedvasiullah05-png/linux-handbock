@@ -1,10 +1,15 @@
 #!/bin/bash
 
-if command -v apt >/dev/null; then
-  sudo apt update
-  sudo apt install -y git nginx openjdk-17-jdk
-else
-  sudo dnf install -y git nginx java-17-openjdk-devel
-fi
+echo "Installing Nginx..."
 
-sudo systemctl enable --now nginx
+if command -v apt >/dev/null; then
+
+elif command -v yum >/dev/null; then
+    sudo yum install nginx -y
+
+else
+    echo "OS not supported"
+    exit 1
+fi
+sudo systemctl start nginx
+sudo systemctl enable nginx
