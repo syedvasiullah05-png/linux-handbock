@@ -1,8 +1,31 @@
-# Daily backup at 2 AM
-0 2 * * * /usr/local/bin/backup_myapp.sh
+#!/bin/bash
+set -e
 
-# Weekly log cleanup
-0 3 * * 0 /usr/local/bin/cleanup_logs.sh
+# Paths to scripts
+BACKUP_SCRIPT=/usr/local/bin/backup_myapp.sh
+CLEANUP_SCRIPT=/usr/local/bin/cleanup_logs.sh
+HEALTH_SCRIPT=/usr/local/bin/app_health.sh
 
-# Health check every 5 mins
-*/5 * * * * /usr/local/bin/app_health.sh
+# Ensure scripts are executable
+sudo chmod +x "$BACKUP_SCRIPT" "$CLEANUP_SCRIPT" "$HEALTH_SCRIPT"
+
+# Install cron if not present (Amazon Linux/Ubuntu)
+if command -v yum >/dev/null 2>&1; then
+    sudo yum install -y cronie
+    sudo systemctl enable --now crond
+elif command -v apt >/dev/null 2>&1; then
+    sudo apt update
+    sudo apt install -y cron
+    sudo systemctl enable --now cron
+fi
+
+# Add cron jobs
+(
+    sudo crontab -l 2>/dev/null
+    echo "0 2 * * * $BACKUP_SCRIPT"
+    echo "0 3 * * 0 $CLEANUP_SCRIPT"
+    echo "*/5 * * * * $HEALTH_SCRIPT"
+) | sudo crontab -
+
+echo "Cron jobs installed:"
+sudo crontab -l
